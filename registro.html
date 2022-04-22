@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+  </head>
+  <body>
+    <h1>Registro</h1>
+
+    <p>
+      <label for="fullname">Nombre completo </label>
+      <br />
+      <input type="text" name="fullname" placeholder="fullname" id="fullname" />
+    </p>
+    <p>
+      <label for="usuario">Usuario </label>
+      <br />
+      <input type="text" name="usuario" placeholder="Usuario" id="usuario" />
+    </p>
+    <p>
+      <label for="contrasena">Contraseña </label>
+      <br />
+      <input
+        type="password"
+        name="contrasena"
+        placeholder="Contraseña"
+        id="contrasena"
+      />
+    </p>
+    <p><input type="button" value="Enviar" onclick="funcion_registro()" /></p>
+    <p>
+      <a href="index.html">
+        <input type="button" value="Volver" onclick="volver" />
+      </a>
+    </p>
+    <div id="error"></div>
+  </body>
+</html>
+
+<script type="module">
+  //import sin nombre
+  import principal from "./principal.js";
+  window.funcion_registro = function () {
+    return principal.registro();
+  };
+</script>
