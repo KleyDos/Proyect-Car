@@ -2,7 +2,7 @@ import { user } from "./backend.js";
 
 export default {
   registro() {
-    const fullmname = document.getElementById("fullname").value;
+    const fullname = document.getElementById("fullname").value;
     const usuario = document.getElementById("usuario").value;
     const contrasena = document.getElementById("contrasena").value;
 
@@ -12,8 +12,11 @@ export default {
       error.innerHTML = "<p>Faltan datos requeridos<p>";
     } else {
 
-      //TODO enviar datos de usuario al backend
-      //ejemplo: user.fullneme = fullname
+      user.fullname = fullname;
+      user.username = usuario;
+      user.password = contrasena;
+      
+
       user.register();
     }
   },
@@ -28,9 +31,9 @@ export default {
 
       error.innerHTML = "<p>Faltan datos requeridos<p>";
     } else {
-      // api.usuario = usuario;
-      // api.contrasena = contrasena;
-      // api.registro();
+
+
+
     }
   },
 };
