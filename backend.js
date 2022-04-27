@@ -4,12 +4,25 @@ export const user = {
   fullname: "",
   username: "",
   password: "",
-  register: function () {
-    console.log("From backend register");
-    // guardar los datos del usuario en localStorage
-    // localStorage.setItem("fullname", this.fullname);
-    // retornar true o false si se pudo registrar o no
 
+  register: function () {
+    try {
+      console.log("From backend register: ");
+      console.log("fullname", this.fullname);
+      console.log("username", this.username);
+      console.log("password", this.password);
+
+      // save data to local storage
+      localStorage.setItem("fullname", this.fullname);
+      localStorage.setItem("username", this.username);
+      localStorage.setItem("password", this.password);
+
+      return true;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
   },
+
   login() {},
 };
