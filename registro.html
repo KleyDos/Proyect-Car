@@ -12,7 +12,12 @@
     <p>
       <label for="nombreCompleto">Nombre Completo </label>
       <br />
-      <input type="text" name="nombreCompleto" placeholder="nombreCompleto" id="nombreCompleto" />
+      <input
+        type="text"
+        name="nombreCompleto"
+        placeholder="nombreCompleto"
+        id="nombreCompleto"
+      />
     </p>
 
     <p>
@@ -33,7 +38,7 @@
     <p><input type="button" value="Enviar" onclick="funcion_registro()" /></p>
     <p>
       <a href="index.html">
-        <input type="button" value="Volver" onclick="volver" />
+        <input type="button" value="Volver" />
       </a>
     </p>
     <div id="error"></div>
@@ -44,7 +49,7 @@
   // import sin nombre ("export default")
   import principal from "./principal.js";
 
-	// registro de funcion para el boton de registro
+  // registro de funcion para el boton de registro
   window.funcion_registro = function () {
     return principal.registro();
   };
