@@ -6,30 +6,24 @@ export const user = {
   password: "",
 
   register: function () {
-    console.log("From backend register");
-    localStorage.setItem("fullname", this.fullname);
-    localStorage.setItem("username", this.username);
-    localStorage.setItem("password", this.password);
-  },
+    try {
+      console.log("From backend register");
+      console.log("fullname", this.fullname);
+      console.log("username", this.username);
+      console.log("password", this.password);
 
-  /* login() {}, */
+      //save data to local storage
+      localStorage.setItem("fullname", this.fullname);
+      localStorage.setItem("username", this.username);
+      localStorage.setItem("password", this.password);
 
-  async cargar(fullname, username, password) {
-    var fullname = localStorage.getItem("fullname");
-    var username = localStorage.getItem("username");
-    var password = localStorage.getItem("password");
-
-    if (
-      fullname === fullname &&
-      username === username &&
-      password === password
-    ) {
       return true;
-      /* console.log(fullname);
-      console.log(username);
-      console.log(password); */
-    } else {
+    } catch (error) {
+      console.log("Error", error);
       return false;
     }
   },
+
+  login() {},
 };
+
