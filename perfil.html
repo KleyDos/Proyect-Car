@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Perfil del Usuario</title>
-</head>
-<body>
-	DEBE MOSTRAR LA INFO DEL USUARIO
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil del Usuario</title>
+  </head>
+  <body>
+    <h1>Perfil</h1>
 
+    <p>
+      <label for="nombreCompleto">Nombre Completo</label>
+      <br />
+      <input
+        type="text"
+        name="nombreCompleto"
+        placeholder="nombreCompleto"
+        id="nombreCompleto"
+      />
+    </p>
+    <p>
+      <label for="usuario">Usuario</label>
+      <br />
+      <input type="text" name="usuario" placeholder="Usuario" id="usuario" />
+    </p>
 
+    <input type="button" value="Editar" onclick="funcion_editar()" />
 
-
-</body>
+    <div id="mensaje"></div>
+  </body>
 </html>
+
+<script type="module">
+  import principal from "./principal.js";
+
+  principal.buscarPerfil();
+
+  window.funcion_editar = function () {
+    return principal.editar();
+  };
+</script>
