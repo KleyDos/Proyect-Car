@@ -1,4 +1,4 @@
-import { user } from "./backend.js";
+import { user, blog } from "./backend.js";
 
 export default {
   registro() {
@@ -55,6 +55,53 @@ export default {
       const mensaje = document.getElementById("mensaje");
 
       mensaje.innerHTML = "<p>Usuario guardado correctamente 😃<p>";
+    }
+  },
+  logout() {
+    console.log("Cerrando sesión...");
+
+    if (user.logout()) {
+      window.location.href = "./index.html";
+    } else {
+      const error = document.getElementById("mensaje");
+      error.innerHTML = "<p>Error al borrar Localstorage<p>";
+    }
+  },
+  agregarPost() {
+    const titulo = document.getElementById("titulo");
+    const historia = document.getElementById("historia");
+
+    const miPost = {
+      // titulo,
+      titulo: titulo.value,
+      // historia,
+      historia: historia.value,
+    };
+    console.log("miPost: ", miPost);
+
+    //agregar al array blog
+    blog.addPost(miPost);
+    titulo.value = "";
+    historia.value = "";
+  },
+
+  mostrarBlog() {
+    console.log("Mostrando blog...");
+    const respuesta = blog.getBlog();
+    const mensaje = document.getElementById("mensaje");
+    if (!respuesta) {
+      mensaje.innerHTML = "<p>Error al obtener el blog<p>";
+    } else {
+      // JSON.stringify(blog.posts)
+      blog.posts.forEach((element) => {
+        mensaje.innerHTML += `
+          <div>
+            <h2>${element.titulo}</h2>
+            <p>${element.historia}</p>
+            <hr/>
+          </div>
+      `;
+      });
     }
   },
 };

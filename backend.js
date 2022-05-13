@@ -56,5 +56,44 @@ export const user = {
     }
   },
 
-  login() {},
+  logout() {
+    try {
+      localStorage.clear();
+      return true;
+    } catch (error) {
+      console.error("Error: ", error);
+      return false;
+    }
+  },
+};
+
+export const blog = {
+  posts: [],
+
+  addPost(post) {
+    try {
+      this.getBlog();
+
+      // this.posts.push(post);
+      this.posts = [...this.posts, post];
+
+      localStorage.setItem("blog", JSON.stringify(this.posts));
+      return true;
+    } catch (error) {
+      console.error("Error: ", error);
+      return false;
+    }
+  },
+
+  getBlog() {
+    try {
+      this.posts = JSON.parse(localStorage.getItem("blog"));
+      if (this.posts === null) this.posts = [];
+      console.table(this.posts);
+      return true;
+    } catch (error) {
+      console.error("Error: ", error);
+      return false;
+    }
+  },
 };
