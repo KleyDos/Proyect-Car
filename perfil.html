@@ -22,13 +22,50 @@
     <p>
       <label for="usuario">Usuario</label>
       <br />
-      <input type="text" name="usuario" placeholder="Usuario" id="usuario" />
+      <input type="text" name="usuario" placeholder="usuario" id="usuario" />
     </p>
 
     <input type="button" value="Editar" onclick="funcion_editar()" />
+    <input type="button" value="Logout" onclick="function_logout()" />
+
+    <a href="index.html">
+      <input type="button" value="volver" />
+    </a>
 
     <div id="mensaje"></div>
-  </body>
+
+    <hr />
+
+    <h1>Blog Admin</h1>
+
+    <!-- Ejemplo de uso de form
+		<form action="funcion_agregarPost"> -->
+    <p>
+      <label for="titulo">Título</label>
+      <br />
+      <input
+        type="text"
+        name="titulo"
+        placeholder="Título del post"
+        id="titulo"
+      />
+    </p>
+
+    <p>
+      <label for="historia">Historia</label>
+      <br />
+      <input
+        type="text"
+        name="historia"
+        placeholder="Historia del post"
+        id="historia"
+      />
+    </p>
+		<!-- Ejemplo de boton tipo submit para form
+		<input type="submit" value="Agregar Post" /> -->
+    <input type="button" value="Agregar Post" onclick=" funcion_agregarPost()" />
+  <!-- </form> -->
+	</body>
 </html>
 
 <script type="module">
@@ -38,5 +75,13 @@
 
   window.funcion_editar = function () {
     return principal.editar();
+  };
+
+	window.funcion_logout = function () {
+    return principal.logout();
+  };
+	
+  window.funcion_agregarPost = function () {
+    return principal.agregarPost();
   };
 </script>

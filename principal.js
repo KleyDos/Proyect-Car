@@ -1,5 +1,7 @@
 import { user } from "./backend.js";
 
+const blog = [];
+
 export default {
   registro() {
     const nombreCompleto = document.getElementById("nombreCompleto").value;
@@ -56,5 +58,32 @@ export default {
 
       mensaje.innerHTML = "<p>Usuario guardado correctamente</p>";
     }
+  },
+  //prueba propia
+  // logout() {
+  //   // localStorage.setItem("fullname", this.fullname);
+  //   // localStorage.setItem("username", this.username);
+  //   // localStorage.setItem("password", this.password);
+
+  //   localStorage.removeItem("fullname", "username");
+  // },
+
+  agregarPost() {
+    const titulo = document.getElementById("titulo");
+    const historia = document.getElementById("historia");
+    console.log("agregar post: ", titulo, historia);
+
+    const post = {
+      titulo: titulo.value,
+            historia: historia.value,
+    };
+    console.log("post: ", post);
+
+
+blog.push(post);
+titulo.value = "";
+historia.value = "";
+
+console.log("blog: ", blog);
   },
 };
