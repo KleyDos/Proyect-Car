@@ -1,6 +1,4 @@
-import { user } from "./backend.js";
-
-const blog = [];
+import { blog, user } from "./backend.js";
 
 export default {
   registro() {
@@ -59,31 +57,51 @@ export default {
       mensaje.innerHTML = "<p>Usuario guardado correctamente</p>";
     }
   },
-  //prueba propia
-  // logout() {
-  //   // localStorage.setItem("fullname", this.fullname);
-  //   // localStorage.setItem("username", this.username);
-  //   // localStorage.setItem("password", this.password);
+  logout() {
+    console.log("Cerrando sesion...");
 
-  //   localStorage.removeItem("fullname", "username");
-  // },
-
+    if (user.logout()) {
+      window.location.href = "./index.html";
+    } else {
+      const error = document.getElementById("mensaje");
+      error.innerHTML = "<p>Error al borrar localstorage<p>";
+    }
+  },
   agregarPost() {
     const titulo = document.getElementById("titulo");
     const historia = document.getElementById("historia");
-    console.log("agregar post: ", titulo, historia);
 
-    const post = {
+    const mipost = {
+      //titulo,
       titulo: titulo.value,
-            historia: historia.value,
+      //historia,
+      historia: historia.value,
     };
-    console.log("post: ", post);
+    console.log("mipost: ", mipost);
 
+    //agregar al array blog
+    blog.addPost(mipost);
+    titulo.value = "";
+    historia.value = "";
+  },
 
-blog.push(post);
-titulo.value = "";
-historia.value = "";
-
-console.log("blog: ", blog);
+  mostrarBlog() {
+    console.log("Mostrar blog...");
+    const respuesta = blog.getBlog();
+    const mensaje = document.getElementById("mensaje");
+    if (!respuesta) {
+      mensaje.innerHTML = "<p>Error al obtener el blog<p>";
+    } else {
+      //JSON.stringify(blog.post)
+      blog.posts.forEach((element) => {
+        mensaje.innerHTML += `
+          <div>
+            <h2>${element.titulo}</h2>
+            <p>${element.historia}</p>
+            <hr/>
+          </div>
+      `;
+      });
+    }
   },
 };
