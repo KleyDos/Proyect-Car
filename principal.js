@@ -1,4 +1,5 @@
 import { blog, user } from "./backend.js";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   registro() {
@@ -73,7 +74,7 @@ export default {
     const historia = document.getElementById("historia");
     const autor = document.getElementById("autor");
 
-    if (titulo === "" || historia === "" || autor === "") {
+    if (titulo.value === "" || historia.value === "" || autor.value === "") {
       const error = document.getElementById("error");
       error.innerHTML = "<p>Los campos no pueden estar vacios<p>";
     } else {
@@ -83,6 +84,10 @@ export default {
         //historia,
         historia: historia.value,
         autor: autor.value,
+        metadata: {
+          fecha: new Date(),
+          id: uuidv4(),
+        },
       };
       console.log("mipost: ", mipost);
       //agregar al array blog
@@ -97,21 +102,22 @@ export default {
     console.log("Mostrar blog...");
     const respuesta = blog.getBlog();
     const mensaje = document.getElementById("mensaje");
+
     if (!respuesta) {
       mensaje.innerHTML = "<p>Error al obtener el blog<p>";
     } else {
+      mensaje.innerHTML = "";
       JSON.stringify(blog.post);
       blog.posts.forEach((element) => {
         if (element)
           mensaje.innerHTML += `
-          <div>
+          <div id="${element.metadata.id}">
             <h2 id="${element.titulo}">${element.titulo}</h2>
             <h4>${element.autor}</h4>
             <p>${element.historia}</p>
-            <input type="button" value="Editar" onclick=""/>
+            <input type="button" value="Editar" onclick="funcion_editarPost('${element.metadata.id}')"/>
             <input type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})"/>
             <hr/>
-
           </div>
       `;
       });
@@ -137,10 +143,11 @@ export default {
   },
   eliminarPost(titulo) {
     blog.deletePost(titulo);
-    const mensaje = document.getElementById("mensaje");
 
-    mensaje.innerHTML = "";
-
+    this.mostrarBlog();
+  },
+  guardarPost(nuevoPost) {
+    blog.guardarPost(nuevoPost);
     this.mostrarBlog();
   },
 };
