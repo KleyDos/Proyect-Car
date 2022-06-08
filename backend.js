@@ -101,15 +101,24 @@ export const blog = {
     try {
       console.log("Post Eliminado", postDelete);
 
-      const porEliminar = this.posts.find((post) => {
-        console.log("post a eliminar", post.titulo);
-        if (postDelete === post.titulo) {
+      this.posts = this.posts.filter((post) => {
+        console.log("post iteración", post.titulo);
+        if (postDelete !== post.titulo) {
           return true;
         }
       });
-      console.log("eliminando post", porEliminar);
-      this.posts.pop(porEliminar);
+
+      // const porEliminar = this.posts.find((post) => {
+      // console.log("post a eliminar", post.titulo);
+      // if (postDelete === post.titulo) {
+      // return true;
+      // }
+      // });
+
       console.table(this.posts);
+
+      localStorage.setItem("blog", JSON.stringify(this.posts));
+
       // localStorage.removeItem("posts", JSON.stringify(this.posts));
       return true;
     } catch (error) {
