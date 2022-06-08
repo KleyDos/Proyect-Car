@@ -43,18 +43,31 @@ export default {
     console.log("Editando perfil...");
     const nombreCompleto = document.getElementById("nombreCompleto").value;
     const usuario = document.getElementById("usuario").value;
+<<<<<<< HEAD
     //user.fullname = nombreCompleto;
     //user.username = usuario;
+=======
+    // user.fullname = nombreCompleto;
+    // user.username = usuario;
+>>>>>>> ff8d112 (register)
 
     const respuesta = user.editUser(nombreCompleto, usuario);
     if (!respuesta) {
       const mensaje = document.getElementById("mensaje");
 
+<<<<<<< HEAD
       mensaje.innerHTML = "<p>Ha ocurrido un error al editar<p>";
     } else {
       const mensaje = document.getElementById("mensaje");
 
       mensaje.innerHTML = "<p>Usuario guardado correctamente</p>";
+=======
+      mensaje.innerHTML = "<p>Ha ocurrido un error al editar 🤕<p>";
+    } else {
+      const mensaje = document.getElementById("mensaje");
+
+      mensaje.innerHTML = "<p>Usuario guardado correctamente 😃<p>";
+>>>>>>> ff8d112 (register)
     }
   },
   logout() {

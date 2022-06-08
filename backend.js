@@ -19,7 +19,11 @@ export const user = {
 
       return true;
     } catch (error) {
+<<<<<<< HEAD
       console.log("Error", error);
+=======
+      console.error("Error: ", error);
+>>>>>>> ff8d112 (register)
       return false;
     }
   },
@@ -30,7 +34,11 @@ export const user = {
       this.username = localStorage.getItem("username");
 
       if (this.fullname === null || this.username === null)
+<<<<<<< HEAD
         throw "No hay datos en el localstorage";
+=======
+        throw "No hay datos en el localStorage";
+>>>>>>> ff8d112 (register)
 
       return {
         fullname: this.fullname,
@@ -52,6 +60,7 @@ export const user = {
       return true;
     } catch (error) {
       console.error("Error: ", error);
+<<<<<<< HEAD
       return false;
     }
   },
@@ -81,6 +90,8 @@ export const blog = {
       return true;
     } catch (error) {
       console.log("Error: ", error);
+=======
+>>>>>>> ff8d112 (register)
       return false;
     }
   },
