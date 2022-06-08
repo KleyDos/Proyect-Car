@@ -26,13 +26,14 @@
     </p>
 
     <input type="button" value="Editar" onclick="funcion_editar()" />
-    <input type="button" value="Logout" onclick="function_logout()" />
+    <input type="button" value="Logout" onclick="funcion_logout()" />
 
     <a href="index.html">
       <input type="button" value="volver" />
     </a>
 
     <div id="mensaje"></div>
+
 
     <hr />
 
@@ -61,6 +62,17 @@
         id="historia"
       />
     </p>
+
+		<p>
+      <label for="autor">Autor</label>
+      <br />
+      <input
+        type="text"
+        name="autor"
+        placeholder="Autor del post"
+        id="autor"
+      />
+    </p>
 		<!-- Ejemplo de boton tipo submit para form
 		<input type="submit" value="Agregar Post" /> -->
     <input type="button" value="Agregar Post" onclick=" funcion_agregarPost()" />
@@ -80,8 +92,11 @@
 	window.funcion_logout = function () {
     return principal.logout();
   };
-	
-  window.funcion_agregarPost = function () {
+
+	window.funcion_agregarPost = function () {
     return principal.agregarPost();
   };
+
+	
+
 </script>

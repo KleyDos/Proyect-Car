@@ -67,22 +67,30 @@ export default {
       error.innerHTML = "<p>Error al borrar localstorage<p>";
     }
   },
+
   agregarPost() {
     const titulo = document.getElementById("titulo");
     const historia = document.getElementById("historia");
+    const autor = document.getElementById("autor");
 
-    const mipost = {
-      //titulo,
-      titulo: titulo.value,
-      //historia,
-      historia: historia.value,
-    };
-    console.log("mipost: ", mipost);
-
-    //agregar al array blog
-    blog.addPost(mipost);
-    titulo.value = "";
-    historia.value = "";
+    if (titulo === "" || historia === "" || autor === "") {
+      const error = document.getElementById("error");
+      error.innerHTML = "<p>Los campos no pueden estar vacios<p>";
+    } else {
+      const mipost = {
+        //titulo,
+        titulo: titulo.value,
+        //historia,
+        historia: historia.value,
+        autor: autor.value,
+      };
+      console.log("mipost: ", mipost);
+      //agregar al array blog
+      blog.addPost(mipost);
+      titulo.value = "";
+      historia.value = "";
+      autor.value = "";
+    }
   },
 
   mostrarBlog() {
@@ -92,16 +100,43 @@ export default {
     if (!respuesta) {
       mensaje.innerHTML = "<p>Error al obtener el blog<p>";
     } else {
-      //JSON.stringify(blog.post)
+      JSON.stringify(blog.post);
       blog.posts.forEach((element) => {
-        mensaje.innerHTML += `
+        if (element)
+          mensaje.innerHTML += `
           <div>
-            <h2>${element.titulo}</h2>
+            <h2 id="${element.titulo}">${element.titulo}</h2>
+            <h4>${element.autor}</h4>
             <p>${element.historia}</p>
+            <input type="button" value="Editar" onclick=""/>
+            <input type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})"/>
             <hr/>
+
           </div>
       `;
       });
+      //Ejemplo basico
+      // const post1 = blog.posts[0];
+      // console.log("post1 :>> ", post1);
+      // const post2 = blog.posts[1];
+      // console.log("post2 :>> ", post2);
+
+      // // mensaje.innerHTML = "<div><h2>" + post1.titulo + "</h2></div>"
+      // mensaje.innerHTML = `
+      //   <div>
+      //     <h2>${post1.titulo}</h2>
+      //   </div>
+      // `
+
+      // mensaje.innerHTML += `
+      //   <div>
+      //     <h2>${post2.titulo}</h2>
+      //   </div>
+      // `;
     }
+  },
+  eliminarPost(titulo) {
+    blog.deletePost(titulo);
+    this.mostrarBlog();
   },
 };

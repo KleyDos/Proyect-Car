@@ -1,0 +1,14 @@
+h2 {
+  color: blue;
+  text-align: center;
+}
+
+h4 {
+	text-align: right;
+	text-decoration: underline;
+}
+p {
+border-width:3px;
+border-style: solid;
+border-color:black;
+}

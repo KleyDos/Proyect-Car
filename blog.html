@@ -17,8 +17,16 @@
       <div id="mensaje"></div>
     </div>
   </body>
+<link rel="stylesheet" href="formas.css">
+
 </html>
 <script type="module">
   import principal from "./principal.js";
   principal.mostrarBlog();
+
+
+	window.funcion_eliminarPost = function (titulo) {
+    return principal.eliminarPost(titulo.id);
+  };
 </script>
+

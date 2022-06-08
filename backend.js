@@ -57,43 +57,64 @@ export const user = {
   },
 
   logout() {
-try {
-  localStorage.clear();
-  return true;
-  }catch (error){
-    console.error("error: ", error);
-    return false;
-  }
+    try {
+      localStorage.clear();
+      return true;
+    } catch (error) {
+      console.error("error: ", error);
+      return false;
+    }
   },
-    };
+};
 
-    export const blog = {
-      posts: [],
+export const blog = {
+  posts: [],
 
-      addPost(post){
-      try {
-        this.getBlog();
+  addPost(post) {
+    try {
+      this.getBlog();
 
-        //this.posts.push(post);
-        this.posts =[...this.posts, post];
+      //this.posts.push(post);
+      this.posts = [...this.posts, post];
 
-        localStorage.setItem("blog", JSON.stringify(this.posts));
-        return true
-      } catch (error) {
-        console.log("Error: ", error);
-        return false;
-      }
-    },
+      localStorage.setItem("blog", JSON.stringify(this.posts));
+      return true;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
 
-    getBlog(){
-      try{
-        this.posts = JSON.parse(localStorage.getItem("blog"));
-        if (this.posts === null) this.posts = [];
-        console.table(this.posts);
-        return true;
-      } catch(error) {
-        console.error("Error: ", error);
-        return false;
-      }
-    },
-    };
+  getBlog() {
+    try {
+      this.posts = JSON.parse(localStorage.getItem("blog"));
+      if (this.posts === null) this.posts = [];
+      console.table(this.posts);
+      return true;
+    } catch (error) {
+      console.error("Error: ", error);
+      return false;
+    }
+  },
+
+  deletePost(postDelete) {
+    try {
+      console.log("Post Eliminado", postDelete);
+
+      const porEliminar = this.posts.find((post) => {
+        console.log("post a eliminar", post.titulo);
+        if (postDelete === post.titulo) {
+          return true;
+        }
+      });
+      console.log("eliminando post", porEliminar);
+      this.posts.pop(porEliminar);
+      console.table(this.posts);
+      // localStorage.removeItem("posts", JSON.stringify(this.posts));
+      return true;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+};
