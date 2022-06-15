@@ -16,17 +16,68 @@
       </a>
       <div id="mensaje"></div>
     </div>
-  </body>
-<link rel="stylesheet" href="formas.css">
+    <h2>Editar Post</h2>
 
+    <p>
+      <input
+        type="text"
+        name=" editarTitulo"
+        placeholder="editarTitulo"
+        id="editarTitulo"
+      />
+
+      <br />
+      <input
+        type="text"
+        name=" editarAutor"
+        placeholder="editarAutor"
+        id="editarAutor"
+      />
+
+      <br />
+      <input
+        type="text"
+        name=" editarHistoria"
+        placeholder="editarHistoria"
+        id="editarHistoria"
+      />
+    </p>
+    <input type="button" value="Guardar" onclick="funcio_guardarPost()" />
+  </body>
+  <link rel="stylesheet" href="formas.css" />
 </html>
 <script type="module">
   import principal from "./principal.js";
+  let postId = null;
   principal.mostrarBlog();
 
-
-	window.funcion_eliminarPost = function (titulo) {
+  window.funcion_eliminarPost = function (titulo) {
     return principal.eliminarPost(titulo.id);
   };
-</script>
 
+  window.funcion_editarPost = function (divId) {
+    postId = divId;
+    const divPrincipal = document.getElementById(postId);
+
+    //childnodes busca elementos dentro de un elemento html padre
+    const titulo = divPrincipal.childNodes[1].innertext;
+    const autor = divPrincipal.childNodes[3].innertext;
+    const historia = divPrincipal.childNodes[5].innertext;
+
+    const editarTitulo = document.getElementById("editarTitulo");
+    const editarAutor = document.getElementById("editarAutor");
+    const editarHistoria = document.getElementById("editarHistoria");
+    editarTitulo.value = titulo;
+    editarAutor.value = autor;
+    editarHistoria.value = historia;
+  };
+
+  window.funcion_guardarPost = function () {
+    return principal.guardarPost({
+      id: postId,
+      titulo: document.getElementById("editarTitulo").value,
+      autor: document.getElementById("editarAutor").value,
+      historia: document.getElementById("editarHistoria").value,
+    });
+  };
+</script>

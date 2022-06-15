@@ -137,10 +137,8 @@ export default {
   },
   eliminarPost(titulo) {
     blog.deletePost(titulo);
-    const mensaje = document.getElementById("mensaje");
-
-    mensaje.innerHTML = "";
 
     this.mostrarBlog();
   },
+  guardar
 };

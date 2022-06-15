@@ -108,13 +108,6 @@ export const blog = {
         }
       });
 
-      // const porEliminar = this.posts.find((post) => {
-      // console.log("post a eliminar", post.titulo);
-      // if (postDelete === post.titulo) {
-      // return true;
-      // }
-      // });
-
       console.table(this.posts);
 
       localStorage.setItem("blog", JSON.stringify(this.posts));
@@ -125,5 +118,19 @@ export const blog = {
       console.log("Error: ", error);
       return false;
     }
+  },
+
+  guardarPost(newPost) {
+    const postEditado = this.find((post) => {
+      if (newPost.id === post.metadata.id) {
+        return true;
+      }
+    });
+
+    postEditado.titulo = newPost.titulo;
+    postEditado.autor = newPost.autor;
+    postEditado.historia = newPost.historia;
+    console.log("postEditado, postEditado");
+    localStorage.setItem("blog", json.stringify(this.post));
   },
 };
