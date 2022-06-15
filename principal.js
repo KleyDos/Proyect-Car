@@ -1,4 +1,5 @@
 import { blog, user } from "./backend.js";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   registro() {
@@ -83,6 +84,10 @@ export default {
         //historia,
         historia: historia.value,
         autor: autor.value,
+        metadata: {
+          fecha: new Date(),
+          id: uuidv4(),
+        },
       };
       console.log("mipost: ", mipost);
       //agregar al array blog
@@ -97,9 +102,11 @@ export default {
     console.log("Mostrar blog...");
     const respuesta = blog.getBlog();
     const mensaje = document.getElementById("mensaje");
+
     if (!respuesta) {
       mensaje.innerHTML = "<p>Error al obtener el blog<p>";
     } else {
+      mensaje.innerHTML = "";
       JSON.stringify(blog.post);
       blog.posts.forEach((element) => {
         if (element)
@@ -111,7 +118,6 @@ export default {
             <input type="button" value="Editar" onclick=""/>
             <input type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})"/>
             <hr/>
-
           </div>
       `;
       });
@@ -140,5 +146,8 @@ export default {
 
     this.mostrarBlog();
   },
-  guardar
+  guardarPost(nuevoPost) {
+    blog.guardarPost(nuevoPost);
+    this.mostrarBlog();
+  },
 };
