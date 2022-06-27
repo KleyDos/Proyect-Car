@@ -7,6 +7,7 @@
     <title>Blog</title>
   </head>
   <body>
+		
     <h1>Blog</h1>
     <div>
       <!-- div de POSTS -->
@@ -42,7 +43,7 @@
         id="editarHistoria"
       />
     </p>
-    <input type="button" value="Guardar" onclick="funcio_guardarPost()" />
+    <input type="button" value="Guardar" onclick="funcion_guardarPost()" />
   </body>
   <link rel="stylesheet" href="formas.css" />
 </html>
@@ -60,9 +61,10 @@
     const divPrincipal = document.getElementById(postId);
 
     //childnodes busca elementos dentro de un elemento html padre
-    const titulo = divPrincipal.childNodes[1].innertext;
-    const autor = divPrincipal.childNodes[3].innertext;
-    const historia = divPrincipal.childNodes[5].innertext;
+    const titulo = divPrincipal.childNodes[1].innerText;
+    console.log("titulo", titulo);
+    const autor = divPrincipal.childNodes[3].innerText;
+    const historia = divPrincipal.childNodes[5].innerText;
 
     const editarTitulo = document.getElementById("editarTitulo");
     const editarAutor = document.getElementById("editarAutor");
@@ -73,11 +75,17 @@
   };
 
   window.funcion_guardarPost = function () {
-    return principal.guardarPost({
+     principal.guardarPost({
       id: postId,
       titulo: document.getElementById("editarTitulo").value,
       autor: document.getElementById("editarAutor").value,
       historia: document.getElementById("editarHistoria").value,
     });
+		const limpia = document.getElementById("editarTitulo")
+		limpia.value= ""
+///
+
+
+
   };
 </script>

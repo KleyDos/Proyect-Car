@@ -5,78 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil del Usuario</title>
-  </head>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+	</head>
   <body>
-    <h1>Perfil</h1>
+
+		<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Perfil</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog </a>
+
+        </li>
+<li class="nav-item">
+          <a class="nav-link" href="#" onclick="funcion_logout()">Logout </a>
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+		<div class="container">
+
 
     <p>
-      <label for="nombreCompleto">Nombre Completo</label>
-      <br />
-      <input
-        type="text"
-        name="nombreCompleto"
-        placeholder="nombreCompleto"
-        id="nombreCompleto"
-      />
-    </p>
-    <p>
-      <label for="usuario">Usuario</label>
-      <br />
-      <input type="text" name="usuario" placeholder="usuario" id="usuario" />
-    </p>
+			<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Nombre Completo</span>
+  <input type="text" name="nombreCompleto" placeholder="nombreCompleto" id="nombreCompleto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
 
-    <input type="button" value="Editar" onclick="funcion_editar()" />
-    <input type="button" value="Logout" onclick="funcion_logout()" />
+  </p>
+	<p>
+	<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
+  <input type="text" name="usuario" placeholder="usuario" id="usuario" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </p>
 
-    <a href="index.html">
-      <input type="button" value="volver" />
-    </a>
+  <button type="button" value="Editar" onclick="funcion_editar()" class="btn btn-primary">Editar</button>
 
-    <div id="mensaje"></div>
+
+<div id="mensaje"></div>
 
     <hr />
 
-    <h1>Blog Admin</h1>
+		<div class="card">
+  <div class="card-header">
+    Blog Admin
+  </div>
+  <div class="card-body">
 
-    <!-- Ejemplo de uso de form
-		<form action="funcion_agregarPost"> -->
-    <p>
-      <label for="titulo">Título</label>
-      <br />
-      <input
-        type="text"
-        name="titulo"
-        placeholder="Título del post"
-        id="titulo"
-      />
-    </p>
 
-    <p>
-      <label for="historia">Historia</label>
-      <br />
-      <input
-        type="text"
-        name="historia"
-        placeholder="Historia del post"
-        id="historia"
-      />
-    </p>
+		<p>
+	<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
+  <input type="text" name="titulo" placeholder="Título del post" id="titulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </p>
 
-    <p>
-      <label for="autor">Autor</label>
-      <br />
-      <input type="text" name="autor" placeholder="Autor del post" id="autor" />
-    </p>
-    <div id="error"></div>
+	<p>
+	<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Historia</span>
+  <input type="text" name="historia" placeholder="Historia del post" id="historia" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </p>
+
+	<p>
+	<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Autor</span>
+  <input type="text" name="autor" placeholder="Autor del post" id="autor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </p>
+
+  <div id="error"></div>
 
     <!-- Ejemplo de boton tipo submit para form
 		<input type="submit" value="Agregar Post" /> -->
-    <input
-      type="button"
-      value="Agregar Post"
-      onclick=" funcion_agregarPost()"
-    />
-    <!-- </form> -->
+		<button type="button" value="Agregar Post" onclick=" funcion_agregarPost()" class="btn btn-primary">Agregar Post</button>
+
+  </div>
+</div>
+
+    <h1></h1>
+
+    <!-- Ejemplo de uso de form
+		<form action="funcion_agregarPost"> -->
+
+</div>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded me-2" alt="...">
+    <strong class="me-auto">mensaje</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+   Usuario guardado correctamente
+  </div>
+</div>
   </body>
 </html>
 

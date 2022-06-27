@@ -120,8 +120,8 @@ export const blog = {
     }
   },
 
-  guardarPost(newPost) {
-    const postEditado = this.find((post) => {
+  savePost(newPost) {
+    const postEditado = this.posts.find((post) => {
       if (newPost.id === post.metadata.id) {
         return true;
       }
@@ -130,7 +130,7 @@ export const blog = {
     postEditado.titulo = newPost.titulo;
     postEditado.autor = newPost.autor;
     postEditado.historia = newPost.historia;
-    console.log("postEditado, postEditado");
-    localStorage.setItem("blog", json.stringify(this.post));
+    console.log("postEditado", postEditado);
+    localStorage.setItem("blog", JSON.stringify(this.posts));
   },
 };

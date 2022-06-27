@@ -1,5 +1,6 @@
 import { blog, user } from "./backend.js";
 import { v4 as uuidv4 } from "uuid";
+// import {bootstrap} from "bootstrap";
 
 export default {
   registro() {
@@ -56,6 +57,10 @@ export default {
       const mensaje = document.getElementById("mensaje");
 
       mensaje.innerHTML = "<p>Usuario guardado correctamente</p>";
+
+      // const toast = new bootstrap.Toast(toastLiveExample);
+
+      // toast.show();
     }
   },
   logout() {
@@ -111,11 +116,11 @@ export default {
       blog.posts.forEach((element) => {
         if (element)
           mensaje.innerHTML += `
-          <div>
+          <div id="${element.metadata.id}">
             <h2 id="${element.titulo}">${element.titulo}</h2>
             <h4>${element.autor}</h4>
             <p>${element.historia}</p>
-            <input type="button" value="Editar" onclick=""/>
+            <input type="button" value="Editar" onclick="funcion_editarPost('${element.metadata.id}')"/>
             <input type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})"/>
             <hr/>
           </div>
@@ -147,7 +152,7 @@ export default {
     this.mostrarBlog();
   },
   guardarPost(nuevoPost) {
-    blog.guardarPost(nuevoPost);
+    blog.savePost(nuevoPost);
     this.mostrarBlog();
   },
 };
