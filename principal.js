@@ -116,14 +116,16 @@ export default {
       blog.posts.forEach((element) => {
         if (element)
           mensaje.innerHTML += `
+          	
           <div id="${element.metadata.id}">
             <h2 id="${element.titulo}">${element.titulo}</h2>
-            <h4>${element.autor}</h4>
-            <p>${element.historia}</p>
-            <input type="button" value="Editar" onclick="funcion_editarPost('${element.metadata.id}')"/>
-            <input type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})"/>
-            <hr/>
+            <br><figcaption  class="blockquote-footer">${element.autor}</cite></figcaption>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">${element.historia}</textarea>
+            <input class="btn btn-primary" type="button" value="Editar" onclick="funcion_editarPost('${element.metadata.id}')">
+            <input class="btn btn-primary" type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})">
+           <hr/>
           </div>
+
       `;
       });
       //Ejemplo basico

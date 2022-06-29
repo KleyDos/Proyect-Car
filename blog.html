@@ -5,45 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-		
-    <h1>Blog</h1>
-    <div>
-      <!-- div de POSTS -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Blog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html"
+              >Home</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div>
+        <!-- div de POSTS -->
 
-      <a href="index.html">
-        <input type="button" value="Volver" />
-      </a>
-      <div id="mensaje"></div>
+        <div id="mensaje"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">Editar Post</div>
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            ></span>
+            <input
+              type="text"
+              name="editarTitulo"
+              placeholder="editarTitulo"
+              id="editarTitulo"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            ></span>
+            <input
+              type="text"
+              name="editarAutor"
+              placeholder="editarAutor"
+              id="editarAutor"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            ></span>
+            <input
+              type="text"
+              name="editarHistoria"
+              placeholder="editarHistoria"
+              id="editarHistoria"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+
+          <button
+            type="button"
+            value="Guardar"
+            onclick="funcion_guardarPost()"
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
     </div>
-    <h2>Editar Post</h2>
-
-    <p>
-      <input
-        type="text"
-        name=" editarTitulo"
-        placeholder="editarTitulo"
-        id="editarTitulo"
-      />
-
-      <br />
-      <input
-        type="text"
-        name=" editarAutor"
-        placeholder="editarAutor"
-        id="editarAutor"
-      />
-
-      <br />
-      <input
-        type="text"
-        name=" editarHistoria"
-        placeholder="editarHistoria"
-        id="editarHistoria"
-      />
-    </p>
-    <input type="button" value="Guardar" onclick="funcion_guardarPost()" />
   </body>
   <link rel="stylesheet" href="formas.css" />
 </html>
@@ -75,17 +125,14 @@
   };
 
   window.funcion_guardarPost = function () {
-     principal.guardarPost({
+    principal.guardarPost({
       id: postId,
       titulo: document.getElementById("editarTitulo").value,
       autor: document.getElementById("editarAutor").value,
       historia: document.getElementById("editarHistoria").value,
     });
-		const limpia = document.getElementById("editarTitulo")
-		limpia.value= ""
-///
-
-
-
+    const limpia = document.getElementById("editarTitulo");
+    limpia.value = "";
+    ///
   };
 </script>
