@@ -1,4 +1,7 @@
 //este backend vive en servidor ecterno y no tiene acceso a pag web
+import axios from "axios";
+
+
 
 export const user = {
   fullname: "",
@@ -6,7 +9,28 @@ export const user = {
   password: "",
 
   register: function () {
-    
+//save data to banckend
+const data = {
+  fullname: this.fullname,
+  username: this.username,
+  password: this.password,
+}
+const config = {
+  method: "post",
+  url: "http://localhost:3000/register",
+  headers: {},
+  data: data,
+}
+return axios(config)
+  .then(function (response) {
+    console.log("backend response: ", response.data);
+    return response.data
+  })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
+
   },
 
   getInfo() {

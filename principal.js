@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 // import {bootstrap} from "bootstrap";
 
 export default {
-  registro() {
+  async registro() {
     const nombreCompleto = document.getElementById("nombreCompleto").value;
     const usuario = document.getElementById("usuario").value;
     const contrasena = document.getElementById("contrasena").value;
@@ -17,7 +17,7 @@ export default {
       user.username = usuario;
       user.password = contrasena;
 
-      const respuesta = user.register();
+      const respuesta = await user.register();
 
       if (respuesta === true) {
         window.location.href = "./perfil.html";
@@ -116,7 +116,7 @@ export default {
       blog.posts.forEach((element) => {
         if (element)
           mensaje.innerHTML += `
-          	
+
           <div id="${element.metadata.id}">
             <h2 id="${element.titulo}">${element.titulo}</h2>
             <br><figcaption  class="blockquote-footer">${element.autor}</cite></figcaption>
