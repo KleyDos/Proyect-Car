@@ -1,78 +1,79 @@
 //este backend vive en servidor ecterno y no tiene acceso a pag web
 import axios from "axios";
 
-
-
 export const user = {
   fullname: "",
   username: "",
   password: "",
 
   register: function () {
-//save data to banckend
-const data = {
-  fullname: this.fullname,
-  username: this.username,
-  password: this.password,
-}
-const config = {
-  method: "post",
-  url: "http://localhost:3000/register",
-  headers: {},
-  data: data,
-}
-return axios(config)
-  .then(function (response) {
-    console.log("backend response: ", response.data);
-    return response.data
-  })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-
-
+    //save data to banckend
+    const data = {
+      fullname: this.fullname,
+      username: this.username,
+      password: this.password,
+    };
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/register",
+      headers: {},
+      data: data,
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   },
 
   getInfo() {
-    try {
-      this.fullname = localStorage.getItem("fullname");
-      this.username = localStorage.getItem("username");
-
-      if (this.fullname === null || this.username === null)
-        throw "No hay datos en el localstorage";
-
-      return {
-        fullname: this.fullname,
-        username: this.username,
-      };
-    } catch (error) {
-      console.error("Error: ", error);
-      return false;
-    }
+    const data = {
+      fullname: this.fullname,
+      username: this.username,
+    };
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/info",
+      headers: {},
+      data: data,
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 
   editUser(fname, us) {
-    try {
-      console.log("f", fname);
-      console.log("u", us);
-      localStorage.setItem("fullname", fname);
-      localStorage.setItem("username", us);
+    const data = {
+      fullname: fname,
+      username: us,
+    };
+    console.log("mostrar :", data);
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/editar",
+      headers: {},
+      data: data,
 
-      return true;
-    } catch (error) {
-      console.error("Error: ", error);
-      return false;
-    }
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 
   logout() {
-    try {
-      localStorage.clear();
-      return true;
-    } catch (error) {
-      console.error("error: ", error);
-      return false;
-    }
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/logout",
+      headers: {},
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 };
 
@@ -80,18 +81,15 @@ export const blog = {
   posts: [],
 
   addPost(post) {
-    try {
-      this.getBlog();
-
-      //this.posts.push(post);
-      this.posts = [...this.posts, post];
-
-      localStorage.setItem("blog", JSON.stringify(this.posts));
-      return true;
-    } catch (error) {
-      console.log("Error: ", error);
-      return false;
-    }
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/add",
+      headers: {},
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 
   getBlog() {

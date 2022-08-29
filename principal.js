@@ -28,9 +28,10 @@ export default {
       console.log("respueta del bakend: ", respuesta);
     }
   },
-  buscarPerfil() {
+
+  async buscarPerfil() {
     console.log("Buscando perfil...");
-    const respuesta = user.getInfo();
+    const respuesta = await user.getInfo();
     console.log("respuesta del backend: ", respuesta);
 
     if (respuesta === false) window.location.href = "./login.html";
@@ -41,14 +42,14 @@ export default {
     nombreCompleto.value = respuesta.fullname;
     usuario.value = respuesta.username;
   },
-  editar() {
+  async editar() {
     console.log("Editando perfil...");
     const nombreCompleto = document.getElementById("nombreCompleto").value;
     const usuario = document.getElementById("usuario").value;
     //user.fullname = nombreCompleto;
     //user.username = usuario;
 
-    const respuesta = user.editUser(nombreCompleto, usuario);
+    const respuesta = await user.editUser(nombreCompleto, usuario);
     if (!respuesta) {
       const mensaje = document.getElementById("mensaje");
 
@@ -63,10 +64,10 @@ export default {
       // toast.show();
     }
   },
-  logout() {
+  async logout() {
     console.log("Cerrando sesion...");
 
-    if (user.logout()) {
+    if (await user.logout()) {
       window.location.href = "./index.html";
     } else {
       const error = document.getElementById("mensaje");
@@ -74,12 +75,12 @@ export default {
     }
   },
 
-  agregarPost() {
+  async agregarPost() {
     const titulo = document.getElementById("titulo");
     const historia = document.getElementById("historia");
     const autor = document.getElementById("autor");
 
-    if (titulo === "" || historia === "" || autor === "") {
+    if ((await titulo) === "" || historia === "" || autor === "") {
       const error = document.getElementById("error");
       error.innerHTML = "<p>Los campos no pueden estar vacios<p>";
     } else {
