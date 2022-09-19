@@ -80,7 +80,7 @@ export default {
     const historia = document.getElementById("historia");
     const autor = document.getElementById("autor");
 
-    if ((await titulo) === "" || historia === "" || autor === "") {
+    if (titulo === "" || historia === "" || autor === "") {
       const error = document.getElementById("error");
       error.innerHTML = "<p>Los campos no pueden estar vacios<p>";
     } else {
@@ -104,17 +104,16 @@ export default {
     }
   },
 
-  mostrarBlog() {
+  async mostrarBlog() {
     console.log("Mostrar blog...");
-    const respuesta = blog.getBlog();
+    const respuesta = await blog.getBlog();
     const mensaje = document.getElementById("mensaje");
 
     if (!respuesta) {
       mensaje.innerHTML = "<p>Error al obtener el blog<p>";
     } else {
       mensaje.innerHTML = "";
-      JSON.stringify(blog.post);
-      blog.posts.forEach((element) => {
+      respuesta.forEach((element) => {
         if (element)
           mensaje.innerHTML += `
 
@@ -123,7 +122,7 @@ export default {
             <br><figcaption  class="blockquote-footer">${element.autor}</cite></figcaption>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">${element.historia}</textarea>
             <input class="btn btn-primary" type="button" value="Editar" onclick="funcion_editarPost('${element.metadata.id}')">
-            <input class="btn btn-primary" type="button" value="Elimitar" onclick="funcion_eliminarPost(${element.titulo})">
+            <input class="btn btn-primary" type="button" value="Elimitar" onclick="funcion_eliminarPost('${element.metadata.id}')">
            <hr/>
           </div>
 
@@ -149,8 +148,8 @@ export default {
       // `;
     }
   },
-  eliminarPost(titulo) {
-    blog.deletePost(titulo);
+  eliminarPost(id) {
+    blog.deletePost(id);
 
     this.mostrarBlog();
   },

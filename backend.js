@@ -56,7 +56,6 @@ export const user = {
       url: "http://localhost:3000/editar",
       headers: {},
       data: data,
-
     };
     return axios(config).then(function (response) {
       console.log("backend response: ", response.data);
@@ -85,7 +84,9 @@ export const blog = {
       method: "post",
       url: "http://localhost:3000/add",
       headers: {},
+      data: post,
     };
+
     return axios(config).then(function (response) {
       console.log("backend response: ", response.data);
       return response.data;
@@ -93,38 +94,29 @@ export const blog = {
   },
 
   getBlog() {
-    try {
-      this.posts = JSON.parse(localStorage.getItem("blog"));
-      if (this.posts === null) this.posts = [];
-      console.table(this.posts);
-      return true;
-    } catch (error) {
-      console.error("Error: ", error);
-      return false;
-    }
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/get",
+      headers: {},
+    };
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 
-  deletePost(postDelete) {
-    try {
-      console.log("Post Eliminado", postDelete);
+  deletePost(id) {
+    const config = {
+      method: "post",
+      url: "http://localhost:3000/delete",
+      headers: {},
+      data: {id},
+    };
 
-      this.posts = this.posts.filter((post) => {
-        console.log("post iteración", post.titulo);
-        if (postDelete !== post.titulo) {
-          return true;
-        }
-      });
-
-      console.table(this.posts);
-
-      localStorage.setItem("blog", JSON.stringify(this.posts));
-
-      // localStorage.removeItem("posts", JSON.stringify(this.posts));
-      return true;
-    } catch (error) {
-      console.log("Error: ", error);
-      return false;
-    }
+    return axios(config).then(function (response) {
+      console.log("backend response: ", response.data);
+      return response.data;
+    });
   },
 
   savePost(newPost) {

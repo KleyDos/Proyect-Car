@@ -102,8 +102,9 @@
   let postId = null;
   principal.mostrarBlog();
 
-  window.funcion_eliminarPost = function (titulo) {
-    return principal.eliminarPost(titulo.id);
+  window.funcion_eliminarPost = function (id) {
+		console.log("Muestra id",id);
+    return principal.eliminarPost(id);
   };
 
   window.funcion_editarPost = function (divId) {
