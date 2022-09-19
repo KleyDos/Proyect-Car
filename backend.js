@@ -110,7 +110,7 @@ export const blog = {
       method: "post",
       url: "http://localhost:3000/delete",
       headers: {},
-      data: {id},
+      data: { id },
     };
 
     return axios(config).then(function (response) {
