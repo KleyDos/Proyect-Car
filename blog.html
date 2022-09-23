@@ -103,19 +103,21 @@
   principal.mostrarBlog();
 
   window.funcion_eliminarPost = function (id) {
-		console.log("Muestra id",id);
+    console.log("Muestra id", id);
     return principal.eliminarPost(id);
   };
 
-  window.funcion_editarPost = function (divId) {
-    postId = divId;
+  window.funcion_editarPost = function (id) {
+    postId = id;
     const divPrincipal = document.getElementById(postId);
 
     //childnodes busca elementos dentro de un elemento html padre
     const titulo = divPrincipal.childNodes[1].innerText;
     console.log("titulo", titulo);
-    const autor = divPrincipal.childNodes[3].innerText;
-    const historia = divPrincipal.childNodes[5].innerText;
+    const autor = divPrincipal.childNodes[4].innerText;
+    console.log("autor", autor);
+    const historia = divPrincipal.childNodes[2].innerText;
+    console.log("historia", historia);
 
     const editarTitulo = document.getElementById("editarTitulo");
     const editarAutor = document.getElementById("editarAutor");
